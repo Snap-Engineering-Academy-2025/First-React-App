@@ -1,0 +1,37 @@
+[
+    {
+        "id": "book1",
+        "title": "The Seven Husbands of Evelyn Hugo",
+        "author": "Taylor Jenkins Reid",
+        "desc": ["Heartbreaking. ", "Fast Read"],
+        "imgURL": "https://i.redd.it/ga9po4pggwea1.jpg"
+    },
+    {
+        "id": "book2",
+        "title": "Pride and Prejudice",
+        "author": "Jane Austen",
+        "desc": ["Classic. ", "Slow at first. ", "Lots of Yearning"],
+        "imgURL": "https://m.media-amazon.com/images/I/712P0p5cXIL._AC_UF1000,1000_QL80_.jpg"
+    },
+    {
+        "id": "book3",
+        "title": "Educated",
+        "author": "Tara Westover",
+        "desc": ["Memoir. ", "Lots of trauma. ", "good read"],
+        "imgURL": "https://m.media-amazon.com/images/I/81Om0n+pfyL.jpg"
+    },
+    {
+        "id": "book4",
+        "title": "Foster",
+        "author": "Claire Keegan",
+        "desc": ["Not sure yet. ", "Jack Edwards recommends"],
+        "imgURL": "https://groveatlantic.com/core/wp-content/uploads/2022/04/FosterHC.jpg"
+    },
+    {
+        "id": "book5",
+        "title": "The Catcher in the Rye",
+        "author": "J.D. Salinger",
+        "desc": ["Classic. ","Coming of Age. ", "Antihero/Problematic MC"],
+        "imgURL": "https://m.media-amazon.com/images/I/8125BDk3l9L.jpg"
+    }
+]

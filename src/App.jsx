@@ -4,14 +4,21 @@ import Container from "@mui/material/Container";
 import './App.css'
 import Grid from '@mui/material/Grid';
 import DataCard from './DataCard';
+import books from "./novels.json";
+import { useState } from 'react';
 
 
 // import characters from './protagonists.json'
 
 function App() {
+
+  //click counter
+  const [clickCounter, setCounter] = useState(0);
+
+
   return (
     <>
-      <Container maxWidth="md" color="grey" sx={{ mb: 4 }}>
+      <Container maxWidth="md" sx={{ mb: 4 }}>
         <Typography
           variant="h2"
           align="center"
@@ -30,52 +37,43 @@ function App() {
         </Typography>
       </Container>
 
+      <Container sx={{ display: 'flex', flexDirection: 'row' }}>
+        <Button
+          variant="contained"
+          sx={{ px: 6, ml: 2, mr: 2 }}
+          onClick={() => {
+            setCounter(clickCounter + 1);
+            console.log("Click counter: ", clickCounter);
+          }}
+        >
+          Click Me
+        </Button>
+
+        <Typography 
+          variant="h5"
+          color="text.secondary"
+        >
+          Clicks so far: {clickCounter}
+        </Typography>
+
+      </Container>
+
       <Grid 
       container 
       spacing={2}
       sx={{
         justifyContent:"center"
       }}>
-
-        <Grid item>
+        {books.map((book) => (
+        <Grid key={book.id}>
           <DataCard
-            title="The Seven Husbands of Evelyn Hugo"
-            desc={["Heartbreaking", "Fast Read"]}
-            imgURL={"https://i.redd.it/ga9po4pggwea1.jpg"}
+            title={book.title}
+            desc={book.desc}
+            imgURL={book.imgURL}
+            author={book.author}
           />
         </Grid>
-
-        <Grid item>
-          <DataCard
-            title="Pride and Prejudice"
-            desc={["Classic", "Slow at first", "Lots of Yearning"]}
-            imgURL={"https://m.media-amazon.com/images/I/712P0p5cXIL._AC_UF1000,1000_QL80_.jpg"}
-          />
-        </Grid>
-
-        <Grid item>
-          <DataCard
-            title="Educated"
-            desc={["Memoir", "Lots of trauma", "good read"]}
-            imgURL={"https://m.media-amazon.com/images/I/81Om0n+pfyL.jpg"}
-          />
-        </Grid>
-
-        <Grid item>
-          <DataCard
-          title="Foster"
-          desc={["Not sure yet", "Jack Edwards recommends"]}
-          imgURL={"https://groveatlantic.com/core/wp-content/uploads/2022/04/FosterHC.jpg"}
-          />
-        </Grid>
-
-        <Grid item>
-          <DataCard
-          title="The Catcher in the Rye"
-          desc={["Classic","Coming of Age", "Antihero/Problematic MC"]}
-          imgURL={"https://m.media-amazon.com/images/I/8125BDk3l9L.jpg"}
-          />
-        </Grid>
+        ))}
       </Grid>
 
       
