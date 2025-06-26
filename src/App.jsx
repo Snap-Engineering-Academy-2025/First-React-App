@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import DataCard from './DataCard';
 import books from "./novels.json";
 import { useState } from 'react';
+import { TextField } from "@mui/material";
 
 
 // import characters from './protagonists.json'
@@ -13,7 +14,24 @@ import { useState } from 'react';
 function App() {
 
   //click counter
-  const [clickCounter, setCounter] = useState(0);
+  //const [clickCounter, setCounter] = useState(0);
+  const [name, setTitle] = useState('');
+
+  let searchBar = books.filter((book) => {
+    let descString = ""
+    for(let i = 0; i < book.desc.length; i++){
+      descString += book.desc[i];
+    }
+
+    let retCondition = book.title.toLowerCase().includes(name.toLowerCase()) || book.author.toLowerCase().includes(name.toLowerCase()) || descString.toLowerCase().includes(name.toLowerCase());
+
+    return retCondition;
+  } );
+  
+  if(searchBar.length == 0)
+  {
+    searchBar = books;
+  }
 
 
   return (
@@ -28,7 +46,7 @@ function App() {
           Book Diary
         </Typography>
         <Typography
-          variant="h5"
+          variant="h6"
           align="center"
           color="text.secondary"
           sx={{ mx: 10 }}
@@ -36,7 +54,19 @@ function App() {
           Keep track of books you've read/want to read!
         </Typography>
       </Container>
-
+      <Container align="center">
+        <TextField 
+        id="outlined-controlled" 
+        label="Search" 
+        value={name}
+        onChange={(e) => {
+          setTitle(e.target.value);
+          //console.log("search field changed: " + name);
+        }} 
+        sx={{ width: 300}}
+        />
+      </Container>
+{/*
       <Container sx={{ display: 'flex', flexDirection: 'row' }}>
         <Button
           variant="contained"
@@ -57,14 +87,14 @@ function App() {
         </Typography>
 
       </Container>
-
+*/}
       <Grid 
       container 
       spacing={2}
       sx={{
         justifyContent:"center"
       }}>
-        {books.map((book) => (
+        {searchBar.map((book) => (
         <Grid key={book.id}>
           <DataCard
             title={book.title}
